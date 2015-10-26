@@ -24,6 +24,7 @@ public class ImdbTest_Register {
 		baseUrl = "http://www.imdb.com/";
 	}
 	
+	//	Scenario 1:
 	//	Given I enter an email that has already been registered with
 	//	When I try to register with that email
 	//	Then site will assume that I forgot my password and give me the 
