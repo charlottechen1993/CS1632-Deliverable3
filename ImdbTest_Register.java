@@ -12,7 +12,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
  * So that I can have access to more functionalities on the site
  */
 
-public class ImdbTest {
+public class ImdbTest_Register {
 	private String baseUrl;
 	  
 	static WebDriver driver = new FirefoxDriver();
@@ -41,7 +41,7 @@ public class ImdbTest {
 	    driver.findElement(By.id("password1")).sendKeys("naruto123");
 	    driver.findElement(By.id("password2")).sendKeys("naruto123");
 	    driver.findElement(By.xpath("//input[@value='Register']")).click();
-		
+	    
 	    WebElement resetPw = driver.findElement(By.linkText("Reset now"));
 		assertTrue(resetPw.isDisplayed());
 	}
