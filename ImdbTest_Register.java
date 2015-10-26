@@ -6,8 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-/**
- * As someone who is not already a user
+/* As someone who is not already a user
  * I want to be able register for IMDB
  * So that I can have access to more functionalities on the site
  */
@@ -24,11 +23,12 @@ public class ImdbTest_Register {
 		baseUrl = "http://www.imdb.com/";
 	}
 	
-	//	Scenario 1:
-	//	Given I enter an email that has already been registered with
-	//	When I try to register with that email
-	//	Then site will assume that I forgot my password and give me the 
-	//	opportunity to reset my password
+	/* Scenario 1:
+	 * Given I enter an email that has already been registered with
+	 * When I try to register with that email
+	 * Then site will assume that I forgot my password and give me the 
+	 * opportunity to reset my password
+	 */
 	@Test
 	public void testRegisteredEmail(){
 		driver.get(baseUrl);
