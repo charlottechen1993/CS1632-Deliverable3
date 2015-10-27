@@ -6,9 +6,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-/* As a logged in user
- * I want to be able rate movies
- * So that I can contribute to the IMDB community
+/* 
+As a general user
+I want to be able access a help section
+So that I can find answers to questions I have about the site
+
  */
 public class ImdbTest_Help {
 	private String baseUrl;
