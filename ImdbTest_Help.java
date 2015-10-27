@@ -46,11 +46,11 @@ public class ImdbTest_Help {
 	public void findSections(){
 		driver.get(baseUrl);
 		driver.findElement(By.linkText("Help")).click();
-		String search = driver.findElement(By.id("help_center")).getText() +
-						driver.findElement(By.id("help_rhs")).getText();
+		String search = driver.findElement(By.id("help_center")).getText();
+		String search2 = driver.findElement(By.id("help_rhs")).getText();
 		
 		boolean str1 = search.contains("Top Frequently Asked Questions");
-		boolean str2 = search.contains("Help Sections/FAQs");
+		boolean str2 = search2.contains("Help Sections/FAQs");
 	
 		assertTrue(str1 && str2);
 	}
