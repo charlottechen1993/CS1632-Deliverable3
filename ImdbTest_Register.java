@@ -48,7 +48,9 @@ public class ImdbTest_Register {
 	    driver.findElement(By.id("password2")).clear();
 	    driver.findElement(By.id("password2")).sendKeys("@zxcvbnm3");
 	    driver.findElement(By.xpath("//input[@value='Register']")).click();
-	    assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[1]/div[3]/form/div[3]/div[3]/div/div")).getText().matches("^Email already associated with an account\\. Did you forget your password[\\s\\S] Reset now$"));
+	    String displayedSearch = driver.findElement(By.className("reg_form")).getText();
+	    
+	    assertTrue(displayedSearch.contains("Email already associated with an account. Did you forget your password?"));
 	}
 	
 	/* Scenario 2:
@@ -80,18 +82,58 @@ public class ImdbTest_Register {
 	 * When I try to register with these passwords
 	 * Then “Passwords must match” should print next to the password input 
 	 */
+	@Test
 	public void testMismatchingPassword(){
-		
+		driver.get(baseUrl + "/register-imdb/form-v2?");
+	    driver.findElement(By.id("first_name")).clear();
+	    driver.findElement(By.id("first_name")).sendKeys("Daniel");
+	    driver.findElement(By.id("last_name")).clear();
+	    driver.findElement(By.id("last_name")).sendKeys("Hui");
+	    driver.findElement(By.id("gender_m")).click();
+	    driver.findElement(By.id("year")).clear();
+	    driver.findElement(By.id("year")).sendKeys("1993");
+	    driver.findElement(By.id("postal")).clear();
+	    driver.findElement(By.id("postal")).sendKeys("18966");
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("danielhui123@gmail.com");
+	    driver.findElement(By.id("password1")).clear();
+	    driver.findElement(By.id("password1")).sendKeys("@zxcvbnm3");
+	    driver.findElement(By.id("password2")).clear();
+	    driver.findElement(By.id("password2")).sendKeys("@zxcvbnm4");
+	    driver.findElement(By.xpath("//input[@value='Register']")).click();
+	    
+	    String displayedSearch = driver.findElement(By.className("reg_form")).getText();
+	    assertTrue(displayedSearch.contains("Passwords must match"));
 	}
 	
 	/* Scenario 4:
-	 * Given I enter a password that does not include a symbol
+	 * Given I enter a password that does not include a symbol or a number
 	 * When I try to register with this password
 	 * Then “Password must contain numbers or symbols” should print next to 
 	 * the password input
 	 */
-	public void testPwWithoutSymbol(){
-		
+	@Test
+	public void testPwWithoutSymbolorNumber(){
+		driver.get(baseUrl + "/register-imdb/form-v2?");
+	    driver.findElement(By.id("first_name")).clear();
+	    driver.findElement(By.id("first_name")).sendKeys("Daniel");
+	    driver.findElement(By.id("last_name")).clear();
+	    driver.findElement(By.id("last_name")).sendKeys("Hui");
+	    driver.findElement(By.id("gender_m")).click();
+	    driver.findElement(By.id("year")).clear();
+	    driver.findElement(By.id("year")).sendKeys("1993");
+	    driver.findElement(By.id("postal")).clear();
+	    driver.findElement(By.id("postal")).sendKeys("18966");
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("danielhui123");
+	    driver.findElement(By.id("password1")).clear();
+	    driver.findElement(By.id("password1")).sendKeys("zxddcvbnm");
+	    driver.findElement(By.id("password2")).clear();
+	    driver.findElement(By.id("password2")).sendKeys("zxddcvbnm");
+	    driver.findElement(By.xpath("//input[@value='Register']")).click();
+	    
+	    String displayedSearch = driver.findElement(By.className("reg_form")).getText();
+	    assertTrue(displayedSearch.contains("Password must contain numbers or symbols"));
 	}
 	
 	/* Scenario 5:
@@ -99,8 +141,28 @@ public class ImdbTest_Register {
 	 * When I try to register with this email
 	 * Then “Please supply a valid email” should print next to the email input
 	 */
+	@Test
 	public void testEmailWithoutDomain(){
-		
+		driver.get(baseUrl + "/register-imdb/form-v2?");
+	    driver.findElement(By.id("first_name")).clear();
+	    driver.findElement(By.id("first_name")).sendKeys("Daniel");
+	    driver.findElement(By.id("last_name")).clear();
+	    driver.findElement(By.id("last_name")).sendKeys("Hui");
+	    driver.findElement(By.id("gender_m")).click();
+	    driver.findElement(By.id("year")).clear();
+	    driver.findElement(By.id("year")).sendKeys("1993");
+	    driver.findElement(By.id("postal")).clear();
+	    driver.findElement(By.id("postal")).sendKeys("18966");
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("danielhui123");
+	    driver.findElement(By.id("password1")).clear();
+	    driver.findElement(By.id("password1")).sendKeys("@zxcvbnm3");
+	    driver.findElement(By.id("password2")).clear();
+	    driver.findElement(By.id("password2")).sendKeys("@zxcvbnm3");
+	    driver.findElement(By.xpath("//input[@value='Register']")).click();
+	    
+	    String displayedSearch = driver.findElement(By.className("reg_form")).getText();
+	    assertTrue(displayedSearch.contains("Please supply a valid email"));
 	}
 	
 	/* Scenario 6:
@@ -109,7 +171,27 @@ public class ImdbTest_Register {
 	 * Then ”Password must be at least 8 characters” should print next to the 
 	 * password input
 	 */
+	@Test
 	public void testPwTooShort(){
-		
+		driver.get(baseUrl + "/register-imdb/form-v2?");
+	    driver.findElement(By.id("first_name")).clear();
+	    driver.findElement(By.id("first_name")).sendKeys("Daniel");
+	    driver.findElement(By.id("last_name")).clear();
+	    driver.findElement(By.id("last_name")).sendKeys("Hui");
+	    driver.findElement(By.id("gender_m")).click();
+	    driver.findElement(By.id("year")).clear();
+	    driver.findElement(By.id("year")).sendKeys("1993");
+	    driver.findElement(By.id("postal")).clear();
+	    driver.findElement(By.id("postal")).sendKeys("18966");
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("danielhui123@gmail.com");
+	    driver.findElement(By.id("password1")).clear();
+	    driver.findElement(By.id("password1")).sendKeys("@vbnm3");
+	    driver.findElement(By.id("password2")).clear();
+	    driver.findElement(By.id("password2")).sendKeys("@vbnm3");
+	    driver.findElement(By.xpath("//input[@value='Register']")).click();
+	    
+	    String displayedSearch = driver.findElement(By.className("reg_form")).getText();
+	    assertTrue(displayedSearch.contains("Password must be at least 8 characters"));
 	}
 }
