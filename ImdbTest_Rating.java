@@ -13,12 +13,29 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 public class ImdbTest_Rating {
 	private String baseUrl;
 	  
-	static WebDriver driver = new FirefoxDriver();
+	static WebDriver driver = new FirefoxDriver(); 
 	
 	// Start at the home page for IMDB for each test
 	@Before
 	public void setUp() throws Exception {
 		driver.get("https://www.imdb.com");
 		baseUrl = "http://www.imdb.com/";
+	}
+	
+	/* Scenario 1:
+	 * Given I rate a movie
+	 * When I navigate to my personal “Your Ratings” page
+	 * Then that movie should show up on that page
+	 */
+	@Test
+	public void testRatedMoviesShowsOnMyPage(){
+		driver.get(baseUrl + "/title/tt3659388/?ref_=nv_sr_1");
+	    driver.findElement(By.linkText("10")).click();
+	    driver.findElement(By.linkText("Your Ratings")).click();
+	    try{
+	    	driver.findElement(By.linkText("The Martian"));
+	    } catch (NoSuchElementException nseex) {
+			fail();
+		}
 	}
 }
