@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 /* As someone who is not already a user
- * I want to be able register for IMDB
+ * I want to be able to register for IMDB
  * So that I can have access to more functionalities on the site
  */
 

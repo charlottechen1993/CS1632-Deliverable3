@@ -8,7 +8,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 /* 
 As a general user
-I want to be able access a help section
+I want to be able to access a help section
 So that I can find answers to questions I have about the site
 
  */
@@ -73,7 +73,7 @@ public class ImdbTest_Help {
 	
 	// Given that I perform a search via the “Search Help” bar and there are results that matches my search
 	// When I view the result page
-	// Then I should be able to see a “Score” next to each question link that suggests me the helpfulness of each results
+    // Then I should be able to see a “Score” followed by a number next to each search result that informs me of their helpfulness
 	@Test
 	public void seeScores(){
 		driver.get(baseUrl);
